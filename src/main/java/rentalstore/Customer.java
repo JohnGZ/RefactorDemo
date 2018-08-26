@@ -11,21 +11,22 @@ public class Customer {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
-        String result = CONST.NAME_LINE_BEGIN + getName() + CONST.NAME_LINE_END;
+        StringBuilder result = new StringBuilder();
+        result.append(PrintTool.printNameLine(getName()));
         while(rentals.hasMoreElements()){
             double thisAmount;
             Rental each = (Rental) rentals.nextElement();
             thisAmount = each.getMovie().getAmount(each.getDayRented());
             frequentRenterPoints += each.getMovie().getPoint();
             //show figures for this rental
-            result += CONST.RECORD_BEGIN + each.getMovie().getTitle() + CONST.EQUAL + String.valueOf(thisAmount) + CONST.RECORD_END;
+            result.append(PrintTool.printRecordLine(each.getMovie().getTitle(),thisAmount));
             totalAmount += thisAmount;
         }
 
         //add footer lines
-        result += CONST.OWE_LINE_BEGIN + String.valueOf(totalAmount) + CONST.OWE_LINE_END;
-        result += CONST.EARNED_LINE_BEGIN + String.valueOf(frequentRenterPoints) + CONST.EARNED_LINE_END;
-        return result;
+        result.append(PrintTool.printOweLine(totalAmount));
+        result.append(PrintTool.printEarnedLine(frequentRenterPoints));
+        return result.toString();
     }
 
     public Customer(String name) {
