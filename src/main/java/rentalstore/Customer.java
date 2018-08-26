@@ -9,7 +9,7 @@ public class Customer {
 
     public String statement(){
         double totalAmount = 0;
-        int frequentRenterPoints = 0;
+        double frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
         StringBuilder result = new StringBuilder();
         result.append(PrintTool.printNameLine(getName()));
@@ -18,12 +18,9 @@ public class Customer {
             Rental each = (Rental) rentals.nextElement();
             thisAmount = each.getMovie().getAmount(each.getDayRented());
             frequentRenterPoints += each.getMovie().getPoint();
-            //show figures for this rental
             result.append(PrintTool.printRecordLine(each.getMovie().getTitle(),thisAmount));
             totalAmount += thisAmount;
         }
-
-        //add footer lines
         result.append(PrintTool.printOweLine(totalAmount));
         result.append(PrintTool.printEarnedLine(frequentRenterPoints));
         return result.toString();

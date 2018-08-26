@@ -3,7 +3,7 @@ package rentalstore;
 public abstract class Movie {
 
     protected String title;
-    protected Integer point = 1;
+    protected Double point = 1.0;
 
     public Movie(String title) {
         this.title = title;
@@ -15,7 +15,7 @@ public abstract class Movie {
         return title;
     }
 
-    public Integer getPoint() {
+    public Double getPoint() {
         return point;
     }
 }

@@ -10,7 +10,7 @@ public class PrintTool {
     public static String printOweLine(Double sumAmount){
         return CONST.OWE_LINE_BEGIN + String.valueOf(sumAmount) + CONST.OWE_LINE_END;
     }
-    public static String printEarnedLine(Integer sumPoint){
+    public static String printEarnedLine(Double sumPoint){
        return CONST.EARNED_LINE_BEGIN + String.valueOf(sumPoint) + CONST.EARNED_LINE_END;
     }
 }
